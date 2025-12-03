@@ -1,0 +1,9 @@
+<!doctype html>
+<html>
+  <head><title>Web Tier</title></head>
+  <body>
+    <h1>Welcome to webserver1</h1>
+    <p>This page served by Nginx on {{ inventory_hostname }}.</p>
+    <p>Backend app: <a href="http://{{ hostvars[groups['app'][0]].inventory_hostname }}:5000">Flask app</a></p>
+  </body>
+</html>

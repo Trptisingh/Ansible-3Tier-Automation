@@ -1,0 +1,45 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install mysql server
+  apt:
+    name: mysql-server
+    state: present
+
+- name: Ensure MySQL service is running
+  service:
+    name: mysql
+    state: started
+    enabled: yes
+
+- name: Create application database
+  shell: mysql -uroot -e "CREATE DATABASE IF NOT EXISTS app_db;"
+
+- name: Create application DB user and grant privileges
+  shell: >
+    mysql -uroot -e
+    "CREATE USER IF NOT EXISTS 'app_user'@'%' IDENTIFIED BY 'app_password';
+     GRANT ALL PRIVILEGES ON app_db.* TO 'app_user'@'%';
+     FLUSH PRIVILEGES;"
+
+- name: Copy schema.sql to /tmp
+  copy:
+    src: files/schema.sql
+    dest: /tmp/schema.sql
+    mode: '0644'
+
+- name: Import schema
+  shell: mysql -uroot app_db < /tmp/schema.sql
+  register: import_result
+  failed_when: false
+
+
+Create roles/dbserver/files/schema.sql (simple example):
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100)
+);

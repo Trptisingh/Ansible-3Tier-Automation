@@ -1,0 +1,14 @@
+[Unit]
+Description=Flask Application
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/opt/flaskapp
+Environment="PATH=/opt/flaskapp/venv/bin"
+ExecStart=/opt/flaskapp/venv/bin/python /opt/flaskapp/app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

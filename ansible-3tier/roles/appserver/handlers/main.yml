@@ -1,0 +1,5 @@
+---
+- name: restart flaskapp
+  systemd:
+    name: flaskapp
+    state: restarted

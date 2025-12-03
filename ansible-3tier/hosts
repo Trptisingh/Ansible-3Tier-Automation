@@ -1,0 +1,8 @@
+[web]
+<PRIVATE KEY of Web Machine>
+
+[app]
+<PRIVATE KEY of App Machine>
+
+[db]
+<PRIVATE KEY of DB Machine>
