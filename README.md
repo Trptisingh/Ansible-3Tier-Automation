@@ -5,7 +5,7 @@ The setup includes dedicated **Web**, **Application**, and **Database** tiers, e
 
 ---
 
-# 🏢 **Problem Statement (Industry-Level)**
+# 🏢 **Problem Statement**
 
 A growing EdTech company is preparing to launch its new student-learning platform.
 To support their microservices adoption, they require:
@@ -132,7 +132,7 @@ The automation provisions:
 
 ```
                 ┌───────────────────────────┐
-                │         Internet           │
+                │         Internet          │
                 └───────────────┬───────────┘
                                 │
                                 v
@@ -150,8 +150,8 @@ The automation provisions:
                                   v
                         ┌───────────────────┐
                         │     DB Server     │
-                        │     (MySQL)        │
-                        └────────────────────┘
+                        │     (MySQL)       │
+                        └───────────────────┘
 ```
 
 ---
